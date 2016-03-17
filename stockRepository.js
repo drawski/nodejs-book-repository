@@ -1,9 +1,9 @@
 var mongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/book_inventory_stock';
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/book_inventory_stock';
 var collectionPromise = mongoClient.connect(url)
     .then(function(db) {
         console.log("Connected correctly to server");
-        return db.collection('books');
+        return db.collection('books_drawski');
     });
 
 module.exports = {
