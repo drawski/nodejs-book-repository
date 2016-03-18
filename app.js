@@ -12,9 +12,9 @@ module.exports = function(stockRepository) {
     app.get('/admin', middleware.authorize, routes.sendHello);
     app.get('/', routes.sendHello);
     app.get('/stock', routes.getStock);
+    app.post('/stock', routes.stockUp);
     app.get('/stock/:isbn', routes.getStockItem);
     app.get('/stock/:isbn/availability', routes.getBookAvailability);
-    app.post('/stock', routes.stockUp);
 
     app.use(middleware.clientError);
     app.use(middleware.serverError);
