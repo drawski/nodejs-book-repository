@@ -3,6 +3,16 @@ function authorize(request, response, next) {
     next();
 }
 
+function responseTime() {
+    return function(req, res, next){
+        var start = new Date;
+        res.on('finish', function() {
+            console.log('Response took ' + (new Date - start) + 'ms');
+        });
+        next();
+    };
+}
+
 function clientError(req, res, next) {
     var err = new Error("Not found");
     err.status = 404;
@@ -18,5 +28,6 @@ function serverError(err, req, res, next) {
 module.exports = {
     authorize: authorize,
     clientError: clientError,
-    serverError: serverError
+    serverError: serverError,
+    responseTime: responseTime
 };

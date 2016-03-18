@@ -6,8 +6,8 @@ module.exports = function(stockRepository) {
     var routes = require('./routes')(stockRepository);
     var middleware = require('./middleware');
 
-
     app.use(bodyParser.json());
+    app.use(middleware.responseTime());
 
     app.get('/admin', middleware.authorize, routes.sendHello);
     app.get('/', routes.sendHello);
