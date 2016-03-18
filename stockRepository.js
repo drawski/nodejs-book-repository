@@ -25,7 +25,6 @@ module.exports = {
     getBook: function(isbn) {
         return collectionPromise
             .then(function(collection) {
-                console.log(isbn);
                 return collection.find({isbn: isbn}).limit(1).next();
             });
     }

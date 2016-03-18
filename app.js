@@ -13,6 +13,7 @@ module.exports = function(stockRepository) {
     app.get('/', routes.sendHello);
     app.get('/stock', routes.getStock);
     app.get('/stock/:isbn', routes.getStockItem);
+    app.get('/stock/:isbn/availability', routes.getBookAvailability);
     app.post('/stock', routes.stockUp);
 
     app.use(middleware.clientError);
